@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -6,26 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'webpage';
 
-  images = ['berlin.jpg', 'code.jpg', 'macbook.jpg'];
-  currentImage = 0;
-  showImage = true;
-
-  ngOnInit() {
-    this.updateImage();
-  }
-
-  updateImage() {
-    setInterval(() => {
-      this.currentImage++;
-      this.currentImage = this.currentImage % this.images.length
-      this.showImage = false;
-
-      setTimeout(() => {
-        this.showImage = true;
-      }, 10)
-    }, 8000)
-  }
+  constructor(public router: Router) { }
 }
